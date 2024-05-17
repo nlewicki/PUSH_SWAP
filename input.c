@@ -6,13 +6,13 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:15:02 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/14 13:07:45 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:57:39 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append(t_list **head, int data)
+void	append(t_list **head, int data, t_stack *stack)
 {
 	t_list	*newnode;
 	t_list	*lastnode;
@@ -27,6 +27,7 @@ void	append(t_list **head, int data)
 	while (lastnode->next != NULL)
 		lastnode = lastnode->next;
 	lastnode->next = newnode;
+	stack->size++;
 }
 
 int	is_a_number(const char *str)
@@ -71,11 +72,12 @@ void	error_and_exit(void)
 
 void	checker_args(int argc, char *argv[])
 {
-	t_list	*head;
+	t_stack	stack_a;
 	int		i;
 	int		num;
 
-	head = NULL;
+	stack_a.size = 0;
+	stack_a.top = NULL;
 	i = 1;
 	while (i < argc)
 	{
@@ -84,17 +86,12 @@ void	checker_args(int argc, char *argv[])
 			error_and_exit();
 		}
 		num = atoi(argv[i]);
-		if (check_duplicate(head, num))
+		if (check_duplicate(stack_a.top, num))
 		{
 			error_and_exit();
 		}
-		append(&head, num);
+		append(&stack_a.top, num, &stack_a);
 		i++;
 	}
-	while (head != NULL)
-	{
-		ft_printf("%d\n", head->data);
-		head = head->next;
-	}
+	print_stack(stack_a.top);
 }
-

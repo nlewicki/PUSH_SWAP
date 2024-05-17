@@ -6,7 +6,7 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:13:20 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/13 13:43:51 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:17:27 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void		ft_lstiter(t_node *lst, void (*f)(void *));
 t_node		*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
 t_list		*ft_lstnew_ps(int content);
 long int	ft_atol(const char *str);
+void		ft_free(int j, char **result);
 
 #endif

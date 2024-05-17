@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:51:34 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/17 13:02:14 by nlewicki         ###   ########.fr       */
+/*   Created: 2024/05/14 15:11:44 by nlewicki          #+#    #+#             */
+/*   Updated: 2024/05/17 13:01:35 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+void	sort(t_stack *stack_a)
 {
-	t_stack	stack_a;
+	t_stack	stack_b;
 
-	stack_a.size = 0;
-	stack_a.top = NULL;
-	if (argc > 2)
-		checker_args(argc, argv);
-	else if (argc == 2)
-		handle_one_arg(argv[1], &stack_a);
-	else
-		printf("Grrrrr Error\n");
-	ft_printf(GREEN"\nSorted:\n"RESET);
-	sort(&stack_a);
-	return (0);
+	stack_b.size = 0;
+	stack_b.top = NULL;
+	sa(stack_a);
+	print_stack(stack_a->top);
+	print_stack(stack_b.top);
 }

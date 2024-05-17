@@ -6,7 +6,7 @@
 #    By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/08 08:38:48 by nlewicki          #+#    #+#              #
-#    Updated: 2024/05/13 12:53:03 by nlewicki         ###   ########.fr        #
+#    Updated: 2024/05/17 12:39:33 by nlewicki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,13 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 CFILES = input.c \
+		input_one_arg.c \
 		push_swap.c \
+		r__pa_pb.c \
+		ra_rb_rr.c \
+		rra_rrb_rrr.c \
+		sa_sb_ss.c \
+		sorting.c \
 
 OBJS = $(CFILES:.c=.o)
 

@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   rra_rrb_rrr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:51:34 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/17 13:02:14 by nlewicki         ###   ########.fr       */
+/*   Created: 2024/05/14 15:14:44 by nlewicki          #+#    #+#             */
+/*   Updated: 2024/05/14 15:44:23 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+void	rra(t_stack *stack_a)
 {
-	t_stack	stack_a;
+	t_list	*temp;
 
-	stack_a.size = 0;
-	stack_a.top = NULL;
-	if (argc > 2)
-		checker_args(argc, argv);
-	else if (argc == 2)
-		handle_one_arg(argv[1], &stack_a);
-	else
-		printf("Grrrrr Error\n");
-	ft_printf(GREEN"\nSorted:\n"RESET);
-	sort(&stack_a);
-	return (0);
+	if (stack_a->size >= 2)
+	{
+		temp = stack_a->top;
+		while (temp->next->next != NULL)
+			temp = temp->next;
+		temp->next->next = stack_a->top;
+		stack_a->top = temp->next;
+		temp->next = NULL;
+	}
+}
+
+void	rrb(t_stack *stack_b)
+{
+	rra(stack_b);
+}
+
+void	rrr(t_stack *stack_a, t_stack *stack_b)
+{
+	rra(stack_a);
+	rrb(stack_b);
 }

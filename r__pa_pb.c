@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   pa_pb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:51:34 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/17 13:02:14 by nlewicki         ###   ########.fr       */
+/*   Created: 2024/05/14 15:13:41 by nlewicki          #+#    #+#             */
+/*   Updated: 2024/05/14 15:34:21 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack	stack_a;
+	t_list	*temp;
 
-	stack_a.size = 0;
-	stack_a.top = NULL;
-	if (argc > 2)
-		checker_args(argc, argv);
-	else if (argc == 2)
-		handle_one_arg(argv[1], &stack_a);
-	else
-		printf("Grrrrr Error\n");
-	ft_printf(GREEN"\nSorted:\n"RESET);
-	sort(&stack_a);
-	return (0);
+	if (stack_b->size > 0)
+	{
+		temp = stack_b->top;
+		stack_b->top = stack_b->top->next;
+		temp->next = stack_a->top;
+		stack_a->top = temp;
+		stack_a->size++;
+		stack_b->size--;
+	}
+}
+
+void	pb(t_stack *stack_a, t_stack *stack_b)
+{
+	pa(stack_b, stack_a);
 }
