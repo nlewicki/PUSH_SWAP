@@ -6,7 +6,7 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:26:26 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/17 12:43:21 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:16:47 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_stack(t_list *head)
 	current = head;
 	while (current != NULL)
 	{
-		printf("%d\n", current->data);
+		printf("Value: %d, Index: %d, Above Median: %s\n", current->data, current->index, current->above_median ? "true" : "false");
 		current = current->next;
 	}
 }
@@ -50,6 +50,6 @@ void	handle_one_arg(char *input, t_stack *stack)
 		append(&stack->top, num, stack);
 		i++;
 	}
-	print_stack(stack->top);
+	print_stack(stack->top); // can be removed later
 	ft_free(i - 1, numbers);
 }

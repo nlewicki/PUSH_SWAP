@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:51:34 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/06/06 12:00:06 by nlewicki         ###   ########.fr       */
+/*   Created: 2024/03/06 15:25:29 by nlewicki          #+#    #+#             */
+/*   Updated: 2024/03/12 12:17:57 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_toupper(int c)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-
-	stack_a.size = 0;
-	stack_a.top = NULL;
-	stack_b.size = 0;
-	stack_b.top = NULL;
-	if (argc > 2)
-		checker_args(argc, argv, &stack_a);
-	else if (argc == 2)
-		handle_one_arg(argv[1], &stack_a);
-	else
-		printf("Grrrrr Error\n");
-	ft_printf(GREEN"\nSorted:\n"RESET);
-	sort(&stack_a, &stack_b);
-	return (0);
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }
+
+// int	main(void)
+// {
+// 	int	c;
+// 	int	d;
+
+// 	d = 'a';
+// 	c = 'a';
+// 	c = toupper(c);
+// 	printf ("%c\n", c);
+// 	d = ft_toupper(d);
+// 	printf ("%c\n", d);
+// }

@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:51:34 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/06/06 12:00:06 by nlewicki         ###   ########.fr       */
+/*   Created: 2024/03/05 09:58:30 by nlewicki          #+#    #+#             */
+/*   Updated: 2024/03/12 12:18:32 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memset(void *str, int value, size_t num)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	size_t			i;
+	unsigned char	*ptr;
 
-	stack_a.size = 0;
-	stack_a.top = NULL;
-	stack_b.size = 0;
-	stack_b.top = NULL;
-	if (argc > 2)
-		checker_args(argc, argv, &stack_a);
-	else if (argc == 2)
-		handle_one_arg(argv[1], &stack_a);
-	else
-		printf("Grrrrr Error\n");
-	ft_printf(GREEN"\nSorted:\n"RESET);
-	sort(&stack_a, &stack_b);
-	return (0);
+	ptr = str;
+	i = 0;
+	while (i < num)
+	{
+		ptr[i] = (unsigned char)value;
+		i++;
+	}
+	return (str);
 }
+
+// int	main(void)
+// {
+// 	char str[] = "Hello, world!";
+// 	size_t num = 5;
+// 	int value = 'A';
+// 	printf("%s\n", str);
+// 	ft_memset(str, value, num);
+// 	printf("%s\n", str);
+
+// 	return 0;
+// }

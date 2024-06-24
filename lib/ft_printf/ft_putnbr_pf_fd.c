@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr__pf_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:51:34 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/06/06 12:00:06 by nlewicki         ###   ########.fr       */
+/*   Created: 2024/03/22 10:47:28 by nlewicki          #+#    #+#             */
+/*   Updated: 2024/04/29 11:41:06 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+int	ft_putnbr_pf_fd(int n, int fd)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	char	c;
+	int		count;
 
-	stack_a.size = 0;
-	stack_a.top = NULL;
-	stack_b.size = 0;
-	stack_b.top = NULL;
-	if (argc > 2)
-		checker_args(argc, argv, &stack_a);
-	else if (argc == 2)
-		handle_one_arg(argv[1], &stack_a);
-	else
-		printf("Grrrrr Error\n");
-	ft_printf(GREEN"\nSorted:\n"RESET);
-	sort(&stack_a, &stack_b);
-	return (0);
+	count = 0;
+	if (n == -2147483648)
+		return (ft_putstr_pf_fd("-2147483648", fd));
+	if (n < 0)
+	{
+		ft_putchar_pf_fd('-', fd);
+		count++;
+		n = -n;
+	}
+	if (n > 9)
+		count += ft_putnbr_pf_fd(n / 10, fd);
+	c = n % 10 + '0';
+	ft_putchar_pf_fd(c, fd);
+	count++;
+	return (count);
 }
