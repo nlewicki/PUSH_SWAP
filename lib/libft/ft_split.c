@@ -6,7 +6,7 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:39:51 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/17 12:17:15 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:19:18 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	*ft_copywords(char const *s, char c)
 	return (word);
 }
 
-void	ft_free(int j, char **result)
+static void	ft_free(int j, char **result)
 {
 	if (result == NULL)
 		return ;

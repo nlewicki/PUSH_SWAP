@@ -6,12 +6,13 @@
 #    By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 11:07:18 by nlewicki          #+#    #+#              #
-#    Updated: 2024/06/06 11:55:05 by nlewicki         ###   ########.fr        #
+#    Updated: 2024/06/24 10:51:12 by nlewicki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 files = ft_bzero.c \
 		ft_atoi.c \
+		ft_atol.c \
 		ft_calloc.c \
 		ft_isalpha.c \
 		ft_isalnum.c \
@@ -44,10 +45,7 @@ files = ft_bzero.c \
 		ft_strmapi.c \
 		ft_striteri.c \
 		ft_split.c \
-		ft_atol.c \
-		ft_lstnew_push_swap.c \
-
-bonus = ft_lstnew_bonus.c \
+		ft_lstnew_bonus.c \
 		ft_lstadd_front_bonus.c \
 		ft_lstsize_bonus.c \
 		ft_lstlast_bonus.c \
@@ -59,25 +57,23 @@ bonus = ft_lstnew_bonus.c \
 
 Compiler = cc
 CmpFlags = -Wall -Wextra -Werror
-CFILES   = $(files)
 OFILES   = $(files:.c=.o)
 NAME     = libft.a
 
 $(NAME): $(OFILES)
 	ar rsc $(NAME) $(OFILES)
 
+%.o: %.c
+	$(Compiler) -c $(CmpFlags) $?
+
 all: $(NAME)
 
 clean:
-	rm -f $(OFILES) $(bonus:.c=.o)
+	rm -f $(OFILES)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-bonus: $(bonus:.c=.o)
-	$(AR) -r $(NAME) $?
-
-.PHONY: all, clean, fclean, re, bonus
-
+.PHONY: all, clean, fclean, re

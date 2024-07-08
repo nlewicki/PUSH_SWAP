@@ -5,80 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 12:13:21 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/06/10 12:42:43 by nlewicki         ###   ########.fr       */
+/*   Created: 2024/06/25 11:01:28 by nlewicki          #+#    #+#             */
+/*   Updated: 2024/06/26 10:37:06 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	end_stack(t_stack *stack)
+int	is_biggest(t_list *stack, int value)
 {
-	t_list	*temp;
-
-	if (!stack || !stack->top)
-		return (0);
-	temp = stack->top;
-	while (temp->next != NULL)
-		temp = temp->next;
-	return (temp->data);
-}
-
-int	top_stack(t_stack *stack)
-{
-	if (!stack || !stack->top)
-		return (0);
-	return (stack->top->data);
-}
-
-int	biggest(t_stack *stack)
-{
-	t_list	*temp;
-	int		biggest;
-
-	if (!stack || !stack->top)
-		return (0);
-	temp = stack->top;
-	biggest = temp->data;
-	while (temp != NULL)
+	while (stack)
 	{
-		if (temp->data > biggest)
-			biggest = temp->data;
-		temp = temp->next;
+		if (*(int *)stack->content > value)
+			return (0);
+		stack = stack->next;
 	}
-	return (biggest);
+	return (1);
 }
 
-int	smallest(t_stack *stack)
+int	is_smallest(t_list *stack, int value)
 {
-	t_list	*temp;
-	int		smallest;
-
-	if (!stack || !stack->top)
-		return (0);
-	temp = stack->top;
-	smallest = temp->data;
-	while (temp != NULL)
+	while (stack)
 	{
-		if (temp->data < smallest)
-			smallest = temp->data;
-		temp = temp->next;
+		if (*(int *)stack->content < value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+t_list	*find_cheapest(t_list *stack_b)
+{
+	t_list	*current;
+	t_list	*cheapest;
+
+	current = stack_b;
+	cheapest = stack_b;
+	while (current)
+	{
+		if (current->price < cheapest->price)
+			cheapest = current;
+		current = current->next;
+	}
+	return (cheapest);
+}
+
+t_list	*find_smallest(t_list *stack)
+{
+	t_list	*tmp;
+	t_list	*smallest;
+
+	tmp = stack;
+	smallest = stack;
+	while (tmp)
+	{
+		if (*(int *)tmp->content < *(int *)smallest->content)
+			smallest = tmp;
+		tmp = tmp->next;
 	}
 	return (smallest);
 }
 
-int	is_sorted(t_stack *stack)
+void	print_stack(t_list *stack)
 {
-	t_list	*temp;
+	t_list	*tmp;
 
-	if (!stack || !stack->top)
-		return (0);
-	temp = stack->top;
-	while (temp->next != NULL)
+	if (stack == NULL)
 	{
-		if (temp->data > temp->next->data)
-			return (0);
-		temp = temp->next;
+		printf("Stack is empty.\n");
+		return ;
 	}
-	return (1);
+	tmp = stack;
+	printf("Stack:\n");
+	while (tmp)
+	{
+		if (tmp->target != NULL)
+		{
+			printf("nmb: %d i: %d med: %d tar: %d price: %d cheapest: %d\n",
+				*(int *)tmp->content, tmp->index, tmp->median,
+				*(int *)tmp->target->content,
+				tmp->price, tmp->cheapest);
+		}
+		else
+		{
+			printf("content: %d index: %d median: %d\n",
+				*(int *)tmp->content, tmp->index, tmp->median);
+		}
+		tmp = tmp->next;
+	}
 }

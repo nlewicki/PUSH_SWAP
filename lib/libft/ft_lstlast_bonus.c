@@ -6,13 +6,13 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:23:59 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/13 13:27:14 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/03/18 11:19:19 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_node	*ft_lstlast(t_node *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	if (lst == NULL)
 		return (NULL);

@@ -1,31 +1,33 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    MAKEFILE                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/08 08:38:48 by nlewicki          #+#    #+#              #
-#    Updated: 2024/06/10 10:33:45 by nlewicki         ###   ########.fr        #
+#    Updated: 2024/06/26 11:06:17 by nlewicki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Sources
-CFILES = input_mult_arg.c \
-		input_one_arg.c \
+CFILES = input_arg.c \
 		push_swap.c \
-		commands/r__pa_pb.c \
+		append_list.c \
+		error_check.c \
+		sort.c \
+		sort_utils.c \
+		init.c \
+		utils.c \
+		commands/sa_sb_ss.c \
+		commands/pa_pb.c \
 		commands/ra_rb_rr.c \
 		commands/rra_rrb_rrr.c \
-		commands/sa_sb_ss.c \
-		sorting.c \
-		utils.c \
-		utils2.c \
 
 # Objects
 OBJS = $(CFILES:.c=.o)
@@ -41,8 +43,6 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 $(NAME): libft printf $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(PRINTF)
 	@echo "\033[32mCompilation done\033[0m"
-	@sleep 2
-	@clear
 
 # build printf and libft
 printf:
@@ -52,7 +52,7 @@ libft:
 	@make -C $(LIBFT_DIR)
 
 # if any .c is not up to date, recompile
-all: $(LIBFT) $(PRINTF) $(NAME)
+all: $(NAME)
 
 # clean object files
 clean:

@@ -6,15 +6,15 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:23:50 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/13 13:26:35 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:56:35 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_node **lst, t_node *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_node	*last;
+	t_list	*last;
 
 	if (*lst == NULL)
 	{

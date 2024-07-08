@@ -6,15 +6,15 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 11:11:53 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/05/13 13:26:59 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:48:50 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_node **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_node	*tmp;
+	t_list	*tmp;
 
 	if (lst == NULL)
 		return ;

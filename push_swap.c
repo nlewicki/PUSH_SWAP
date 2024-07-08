@@ -6,7 +6,7 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:51:34 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/06/06 12:00:06 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/07/04 09:00:55 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	t_list	*stack_a;
+	t_list	*stack_b;
 
-	stack_a.size = 0;
-	stack_a.top = NULL;
-	stack_b.size = 0;
-	stack_b.top = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc == 1)
+		return (0);
 	if (argc > 2)
-		checker_args(argc, argv, &stack_a);
+		handle_mult_arg(argc, argv, &stack_a);
 	else if (argc == 2)
+	{
+		if (argv[1][0] == '\0')
+			return (0);
 		handle_one_arg(argv[1], &stack_a);
+	}
 	else
-		printf("Grrrrr Error\n");
-	ft_printf(GREEN"\nSorted:\n"RESET);
+		write(2, "Error\n", 6);
 	sort(&stack_a, &stack_b);
+	clear(&stack_a, &stack_b);
 	return (0);
 }
