@@ -6,7 +6,7 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:47:09 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/06/26 11:33:07 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:15:34 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	print_stack(t_list *stack);
 void	tiny_sort(t_list **stack);
 void	big_sort(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
+void	min_on_top(t_list **stack, t_list *smallest);
 
 // ------<>------ sort_utils ------<>------
 void	move_back(t_list **stack_a, t_list **stack_b);

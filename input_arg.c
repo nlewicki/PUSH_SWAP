@@ -6,7 +6,7 @@
 /*   By: nlewicki <nlewicki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:15:02 by nlewicki          #+#    #+#             */
-/*   Updated: 2024/07/04 09:00:15 by nlewicki         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:50:58 by nlewicki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	handle_mult_arg(int count, char *argv[], t_list **stack_a)
 		j++;
 		i++;
 	}
+	numbers[j] = NULL;
 	error_check(numbers);
 	append_list(stack_a, numbers);
 	ft_free(numbers);
